@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Book Detail
+{% endblock title %}
+
+{% block sidenav %}
+    {% for item in item_list %}
+        <li style="padding-right: 10%;">
+            <a href="{{ item.link  }}">{{ item.item }}</a>
+        </li>
+    {% endfor %}
+{% endblock sidenav %}
+
+{% block content %}
+
+<h1 align="center">Book Detail</h1>
+<img src="{% static book.pic_path %}" width="200px"/>
+<table align="center" border="2" width="80%" class="table table-hover">
+    <tr>
+        <th>
+            Book Title
+        </th>
+        <td>
+          {{ book.name }}
+        </td>
+    </tr>
+    <tr>
+      <th>
+          Published By
+      </th>
+      <td>
+        {{ book.username }}
+      </td>
+    </tr>
+    <tr>
+        <th>
+            Rating
+        </th>
+        <td> {{ book.rating }}</td>
+    </tr>
+</table>
+
+<div>
+    <a href="../book_detail_rate/{{ book.id }}">Rate</a>
+    <a href="../add_comment/{{ book.id }}"> Add a Comment </a>
+</div>
+
+<br/>
+
+<table class="table table-hover">
+    {% for comment in comments %}
+            <tr>
+                <td>
+                    <b>{{ comment.title }}</b>
+                </td>
+                <td>
+                    <p style = "text-align: right;">{{ comment.username }}</p>
+                    {% if comment in user_comments %}
+                    <a href="../delete_comment/{{ comment.id }}">Delete</a>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td style="colspan='2'">
+                  {{ comment.body }}
+                </td>
+            </tr>
+
+    {% endfor %}
+</table>
+
+
+
+{% endblock content %}

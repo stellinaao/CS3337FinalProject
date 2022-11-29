@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Search Book Page
+{% endblock title %}
+
+{% block sidenav %}
+    {% for item in item_list %}
+        <li style="padding-right: 10%;">
+            <a href="{{ item.link  }}">{{ item.item }}</a>
+        </li>
+    {% endfor %}
+{% endblock sidenav %}
+
+{% block content %}
+
+<h1 align="center">Search</h1>
+
+
+<form action="" enctype="multipart/form-data" method="post" novalidate>
+  <table>
+    <input type="text" name="book_input" placeholder="Book name, author,..." />
+    <button type="submit" value="Search" size="4">Search</button>
+  </table>
+
+  {% csrf_token %}
+</form>
+
+{% endblock content %}

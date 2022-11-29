@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Book Rate
+{% endblock title %}
+
+{% block sidenav %}
+    {% for item in item_list %}
+        <li style="padding-right: 10%;">
+            <a href="{{ item.link  }}">{{ item.item }}</a>
+        </li>
+    {% endfor %}
+{% endblock sidenav %}
+
+{% block content %}
+
+<h1 align="center">Book Detail</h1>
+<img src="{% static book.pic_path %}" width="100"/>
+
+<table align="center" border="2" width="400" class="table table-hover">
+    <tr>
+        <th>
+            Book Title
+        </th>
+        <td>
+          {{ book.name }}
+        </td>
+    </tr>
+    <tr>
+      <th>
+          Published By
+      </th>
+      <td>
+        {{ book.username }}
+      </td>
+    </tr>
+    <tr>
+        <th>
+            Rating
+        </th>
+        <td> {{ book.rating }}</td>
+    </tr>
+</table>
+
+<form action="" enctype="multipart/form-data" method="post" novalidate>
+    <table>
+        {{ form.as_table }}
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Rate">
+            </td>
+        </tr>
+    </table>
+    {% csrf_token %}
+</form>
+
+
+{% endblock content %}
