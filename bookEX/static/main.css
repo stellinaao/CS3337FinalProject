@@ -9,8 +9,8 @@
 
 #wrapper {
     margin-top: 0px;
-    background-color: green;
-    width: 100%;
+    width: 92%;
+    margin: 4%;
 }
 
 /*
@@ -42,14 +42,11 @@
 }
 
 #main {
-    width: 80%;
-    float: right;
+    width: 100%;
     margin-left: 0px;
     margin-right: 2%;
     padding-right: 2%;
     display: inline-block;
-    background-color: green;
-    text-align: right;
 }
 
 #footer {
@@ -59,4 +56,6 @@
     border-top: thin solid #BBBBBB;
     clear: both;
     color: #969696;
+    width: 92%;
+    margin: 2%
 }
